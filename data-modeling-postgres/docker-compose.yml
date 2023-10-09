@@ -1,19 +1,18 @@
-version: '3'
+# version: '3'
 
 services:
   
   postgres:
     image: postgres
     container_name: "postgres"
-    #hostname: postgres
-    ports:
-      - "15432:5432"
     environment:
       POSTGRES_USER: test
       POSTGRES_PASSWORD: test123
       POSTGRES_DB: postgres_db
+    ports:
+      - "15432:5432"
     volumes:
-      - ./postgres-data/var/lib/postgresql/data§§
+      - postgres:/var/lib/postgres/data
     restart: unless-stopped
     networks:
       - postgres-compose-network
@@ -28,15 +27,14 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: test@pgadmin.org
       PGADMIN_DEFAULT_PASSWORD: test123
-    #environment: "POSTGRES_HOST_AUTH_METHOD=trust"
     volumes:
-      - ./postgres-data/var/lib/pgadmin4/data
+      - postgres:/var/lib/pgadmin/data
     restart: unless-stopped
     networks:
       - postgres-compose-network
 
 volumes:
-  postgres-data:
+  postgres:
 
 networks: 
   postgres-compose-network:
