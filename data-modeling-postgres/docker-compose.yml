@@ -1,13 +1,11 @@
-# version: '3'
-
 services:
   
   postgres:
     image: postgres
     container_name: "postgres"
     environment:
-      POSTGRES_USER: test
-      POSTGRES_PASSWORD: test123
+      POSTGRES_USER: student
+      POSTGRES_PASSWORD: student
       POSTGRES_DB: postgres_db
     ports:
       - "15432:5432"
