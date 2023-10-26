@@ -1,5 +1,5 @@
 psycopg2
-panda
+pandas
 numpy
 jupyter
 ipython-sql
